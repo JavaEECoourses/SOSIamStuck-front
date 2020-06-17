@@ -1,1 +1,32 @@
-<p>home works!</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Nous sommes la pour vous</h1>
+    <p class="lead">Vous cherchez un dépanneur sans passer par des societé ? </p>
+    <p class="lead">N'hésitez pas à contacter vos dépanneur ! </p>
+  </div>
+</div>
+<div class="container">
+  <form [formGroup]="searchForm" method="post" (ngSubmit)="searchForm">
+  <div class="row" text-center>
+    <div class="col-sm" class ="form-group">
+      <input name="codePostale" placeholder="code postale" class ="form-control" formControlName="codePostale" [class.is-valid]="searchForm.valid && searchForm.dirty"
+      [class.is-invalid]="searchForm.invalid && searchForm.dirty">
+    </div>
+    <div class="col-sm">
+      <select class="form-control" (change)="selectChangeHandler($event)">
+        <option selected value="default">Trouver mon dépanneur</option>
+        <option Value="mecanicien">Mecanicien</option>
+        <option value="electricien">Electricien</option>
+        <option Value ="plombier">Plombier</option>
+      </select>
+    </div>
+    <div class="col-sm">
+      <button class="form-control button-style" (click)="rechercherDepanneur(searchForm.value.codePostale,selectedCategory)">rechercher</button>
+    </div>
+    <div class="col-sm">
+      <p>{{searchForm.value.codePostale}} et {{selectedCategory}}</p>
+    </div>
+  </div>
+  </form>
+</div>
+
