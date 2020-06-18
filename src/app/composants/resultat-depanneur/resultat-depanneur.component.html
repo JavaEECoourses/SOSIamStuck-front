@@ -1,0 +1,18 @@
+<agm-map [latitude]="latitude" [longitude]="longitude" >
+
+</agm-map>
+<div class ="container-fluid center_div">
+
+<H1> Les différents prestataire</H1>
+<ul *ngFor="let resultat of filtredResults">
+
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{resultat.nom}} {{resultat.prenom}}</h5>
+      <p class="card-text">{{resultat.category}}</p>
+      <a href="#" class="btn btn-primary">voir le profile</a>
+    </div>
+  </div>
+</ul>
+</div>
