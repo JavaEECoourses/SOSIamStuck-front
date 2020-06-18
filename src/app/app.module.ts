@@ -11,6 +11,8 @@ import { InscriptionComponent } from './composants/inscription/inscription.compo
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ResultatDepanneurComponent } from './composants/resultat-depanneur/resultat-depanneur.component';
 import { AgmCoreModule} from '@agm/core'
+import {HttpClientModule} from "@angular/common/http";
+import { EspaceDepanneurComponent } from './composants/espace-depanneur/espace-depanneur.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { AgmCoreModule} from '@agm/core'
     UtilisateurComponent,
     DepanneurComponent,
     InscriptionComponent,
-    ResultatDepanneurComponent
+    ResultatDepanneurComponent,
+    EspaceDepanneurComponent
   ],
     imports: [
         BrowserModule,
@@ -28,6 +31,7 @@ import { AgmCoreModule} from '@agm/core'
         NgbModule,
         ReactiveFormsModule,
         FormsModule,
+        HttpClientModule,
         AgmCoreModule.forRoot({
           apiKey :'AIzaSyCfuOM2dS9S24QwiSaZWPInoSEcOYeMEU0',
           libraries: ['places']
