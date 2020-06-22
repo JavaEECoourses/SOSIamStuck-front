@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
+import {Depanneur} from "../../modeles/depanneur";
 
 @Component({
   selector: 'app-resultat-depanneur',
@@ -8,23 +10,18 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ResultatDepanneurComponent implements OnInit {
 
- public resultats = [
-   { codePostale: 77200 , category :"mecanicien" , prenom : "zakaria" , nom : "marrah" },
-   { codePostale: 75010 , category :"mecanicien" , prenom : "boris" , nom : "Sauvage" },
-   { codePostale: 92200 , category :"plombier" , prenom : "stephane" , nom : "SS" },
-   { codePostale: 92200 , category :"mecanicien" , prenom : "mattias" , nom : "ss" },
-   { codePostale: 77200 , category :"electricien" , prenom : "maroune" , nom : "mm" },
-   { codePostale: 77200 , category :"mecanicien" , prenom : "imen" , nom : "jdidi" },
-
-    ];
-    public filtredResults :({ category: string; prenom: string; nom: string; codePostale: number } | { category: string; prenom: string; nom: string; codePostale: number } | { category: string; prenom: string; nom: string; codePostale: number } | { category: string; prenom: string; nom: string; codePostale: number } | { category: string; prenom: string; nom: string; codePostale: number })[] ;
+    public depanneurs : Depanneur[] ;
+    public filtredDepanneurs : Depanneur[] ;
     public latitude: number;
     public longitude: number;
     public zoom: number;
-    constructor(private route :ActivatedRoute) { }
+    constructor(private route :ActivatedRoute, private userService : UserService) { }
     public sub: any;
-    public cp: number;
+    public cp: string;
     public category: string;
+    public lat = 40.730610;
+    public lng = -73.935242;
+
 
   ngOnInit(): void {
     this.sub = this.route.queryParams.subscribe(params => {
@@ -33,10 +30,19 @@ export class ResultatDepanneurComponent implements OnInit {
       console.log(" cp :"+ this.cp + " category : "+this.category);
 
       // In a real app: dispatch action to load the details here.
+      this.userService.getAllDepanneur().subscribe(data =>{
+        this.depanneurs = data;
+        if(this.depanneurs != null){
+          this.filtredDepanneurs = this.depanneurs.filter(result => {
+            console.log( " result cp :"+result.adresse.codePostale);
+            console.log( " result categorie :"+result.categorie);
+            return result.adresse.codePostale === this.cp && result.categorie === this.category;
+          });
+        }
+      });
     });
-  this.filtredResults = this.resultats.filter(result =>
-  result.codePostale == this.cp && result.category == this.category);
-  console.log(this.filtredResults);
+
+
     this.setCurrentLocation();
   }
 // Get Current Location Coordinates

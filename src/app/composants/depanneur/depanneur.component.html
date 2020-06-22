@@ -3,12 +3,12 @@
   <h2> Connexion Dépanneur </h2>
   <form [formGroup]="myForm" (ngSubmit)="checkLogin()" method="post">
     <div class="form-group">
-      <label for="email">Email address</label>
+      <label for="email">Login</label>
       <input type="email" class="form-control" formControlName="email" [class.is-invalid]="myForm.invalid && myForm.dirty" [class.is-valid]="myForm.valid" id="email" aria-describedby="emailHelp">
       <!--      <div *ngIf="myForm.dirty && myForm.invalid" class="alert alert-danger">Email non valide !</div>-->
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password">mot de passe </label>
       <input type="password" class="form-control" id="password">
     </div>
     <!--    <div class="form-group form-check">-->

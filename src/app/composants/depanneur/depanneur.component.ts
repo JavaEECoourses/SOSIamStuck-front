@@ -18,7 +18,7 @@ export class DepanneurComponent implements OnInit {
   }
 
   checkLogin() {
-  this.router.navigate(['/inscription']);
+  this.router.navigate(['/home']);
   }
 
   goToSubscribe() {

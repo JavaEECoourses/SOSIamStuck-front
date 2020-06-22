@@ -27,6 +27,7 @@ export class UtilisateurComponent implements OnInit {
       if (data !== null){
         console.log(" data :"+data.nom);
         this.sucess=true;
+        this.routeur.navigate(['/home']);
       }else {
         this.sucess=false;
       }

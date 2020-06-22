@@ -1,7 +1,7 @@
 <!-- Material form login -->
 <div class="container center_div">
   <h2> Inscription </h2>
-  <form [formGroup]="signupForm">
+  <form [formGroup]="signupForm" (ngSubmit)="saveUser()">
     <div class="form-check-inline">
     <label> Je suis un : </label>
     </div>
@@ -14,31 +14,31 @@
       <label class="form-check-label" for="inlineRadio2">Dépanneur</label>
     </div>
     <div *ngIf="selectedUserType === 'depanneur' " class="form-group">
-    <select class="form-control" (change)="selectCategoryChangeHandler($event)">
+    <select class="form-control" formControlName="categorie" (change)="selectCategoryChangeHandler($event)">
       <option selected value="default">Categorie</option>
       <option *ngFor=" let cat of category" value="{{cat}}">{{cat}}</option>
     </select>
     </div>
     <div class="form-group">
-      <label for="lastName">Nom</label>
-      <input type="text" class="form-control" id="lastName">
+      <label for="nom">Nom</label>
+      <input type="text" class="form-control" formControlName="nom" [class.is-valid]="signupForm.valid && signupForm.dirty"  id="nom">
     </div>
     <div class="form-group">
-      <label for="firstName">Prenom</label>
-      <input type="text" class="form-control" id="firstName">
+      <label for="prenom">Prenom</label>
+      <input type="text" class="form-control" formControlName="prenom" id="prenom">
     </div>
     <div class="form-group">
       <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+      <input type="email" class="form-control" formControlName="email" id="email" aria-describedby="emailHelp">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="login">Login</label>
-      <input type="text" class="form-control" id="login">
+      <input type="text" class="form-control" formControlName="login" id="login">
     </div>
     <div class="form-group">
       <label for="password">Mot de passe</label>
-      <input type="password" class="form-control" id="password">
+      <input type="password" class="form-control" formControlName="password" id="password">
     </div>
     <div class="form-group">
       <label for="confirmPassword">Confirmer mot de passe</label>
@@ -46,20 +46,24 @@
     </div>
     <div class="form-group">
       <label for="phoneNumber">Numero de telephone</label>
-      <input type="text" class="form-control" id="phoneNumber">
+      <input type="text" class="form-control" formControlName="telephone" id="phoneNumber">
     </div>
 
     <div class="form-group">
       <label for="address">Adresse</label>
-      <input type="text" class="form-control" id="address">
+      <input type="text" class="form-control" formControlName="adresse" id="address">
+    </div>
+    <div class="form-group">
+      <label for="ville">Ville</label>
+      <input type="text" class="form-control" formControlName="ville" id="ville">
     </div>
     <div class="form-group">
       <label for="codePostal">Code postal</label>
-      <input type="text" class="form-control" id="codePostal">
+      <input type="text" class="form-control" formControlName="codePostale" id="codePostal">
     </div>
     <div class="form-group">
       <label for="country">Pays</label>
-      <input type="text" class="form-control" id="country">
+      <input type="text" class="form-control" formControlName="pays" id="country">
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

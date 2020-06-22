@@ -1,17 +1,20 @@
 <agm-map [latitude]="latitude" [longitude]="longitude" >
+  <agm-marker [latitude]="latitude" [longitude]="longitude">
 
+  </agm-marker>
 </agm-map>
 <div class ="container-fluid center_div">
 
-<H1> Les différents prestataire</H1>
-<ul *ngFor="let resultat of filtredResults">
+<H2> Les différents prestataires </H2>
+<ul *ngFor="let resultat of filtredDepanneurs">
 
   <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
+    <img class="card-img-top" src="assets/img/img-top-depannage.png" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{resultat.nom}} {{resultat.prenom}}</h5>
-      <p class="card-text">{{resultat.category}}</p>
+      <p class="card-text">{{resultat.categorie}}</p>
       <a href="#" class="btn btn-primary">voir le profile</a>
+      <a href="#" class="btn btn-outline-secondary">reserver</a>
     </div>
   </div>
 </ul>

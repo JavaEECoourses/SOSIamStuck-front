@@ -5,6 +5,7 @@ import {UtilisateurComponent} from "./composants/utilisateur/utilisateur.compone
 import {DepanneurComponent} from "./composants/depanneur/depanneur.component";
 import {InscriptionComponent} from "./composants/inscription/inscription.component";
 import {ResultatDepanneurComponent} from "./composants/resultat-depanneur/resultat-depanneur.component";
+import {EspaceDepanneurComponent} from "./composants/espace-depanneur/espace-depanneur.component";
 
 
 const routes: Routes = [
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path : 'resultat' , component : ResultatDepanneurComponent
+  },
+  {
+    path : 'espace-depanneur' , component : EspaceDepanneurComponent
   }
 ];
 
